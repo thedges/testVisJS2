@@ -13,7 +13,7 @@ export default class TestVisJS2 extends LightningElement {
 
         this.visjsInitialized = true;
         Promise.all([
-            loadScript(this, VISJS + '/vis-network.min.js')
+            loadScript(this, VISJS + '/VisJS740/vis-network.min.js')
         ])
             .then(() => {
                 this.initializeNetwork();
@@ -54,6 +54,8 @@ export default class TestVisJS2 extends LightningElement {
         
           // create a network
           var container = this.template.querySelector('.mynetwork');
+          var innerDiv = document.createElement('div');
+          container.appendChild(innerDiv);
           //var container = this.template.querySelector ('.mynetwork').getContext ('2d');
           var data = {
             nodes: nodes,
@@ -68,7 +70,7 @@ export default class TestVisJS2 extends LightningElement {
 
         catch (err)
         {
-            console.log('error=' + err.message);
+            console.log('error=' + JSON.stringify(err));
         }
     }
 }
